@@ -1,0 +1,18 @@
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  margin-bottom: 168px;
+}
+
+footer {
+  &.fix-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;;
+    padding-bottom: 3rem;
+  }
+}
+
