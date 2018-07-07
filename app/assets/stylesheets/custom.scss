@@ -7,10 +7,7 @@ html {
   margin-bottom: 168px;
 }
 
-.form-margin {
-  margin-left: 50px;
-  margin-right: 50px;
-}
+
 
 .main-container {
   padding-left: 20px;
@@ -19,6 +16,10 @@ html {
 
 .is-center {
   text-align: center;
+}
+
+.field_with_errors input {
+  border-color: #ff3860;
 }
 
 footer {

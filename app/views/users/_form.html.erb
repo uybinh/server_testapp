@@ -1,4 +1,6 @@
-<div class="box column is-6 is-offset-3 form-margin">
+
+<div class="box column is-6 is-offset-3">
+    <%= render "shared/error_messages" %> 
     <%= form_for(@user) do |f| %>
       <div class="field">
         <%= f.label :name, class: "label" %>

@@ -11,6 +11,10 @@
 
   <body class="margin-bottom">
     <%= render "layouts/navbar"%>
+    <% flash.each do |message_type, message| %>
+      <%= content_tag :div, message, class: "notification is-#{message_type}" %>
+    <% end %>
+    </div>
     <div class="container main-container">
       <%= yield %>
     </div>
