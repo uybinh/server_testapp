@@ -1,2 +1,38 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<% provide(:title, "Log in") %>
+
+<h1 class="title is-2 is-center" >User login</h1>
+
+<div class="container">
+  <div class="box column is-6 is-offset-3">
+    
+    <%= form_for(:sessions, url: login_path) do |f| %>
+        
+      <div class="field">
+        <%= f.label :email, class: "label" %>
+        <div class="control has-icons-left">
+          <%= f.email_field :email, class: "input", placeholder: "User email" %>
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, class: "label" %>
+        <div class="control has-icons-left">
+          <%= f.password_field :password, class: "input", placeholder: "Type your password" %>
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span> 
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <%= f.submit "Login", class: "button is-link" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+  
