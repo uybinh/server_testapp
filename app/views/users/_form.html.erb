@@ -1,0 +1,56 @@
+<div class="box column is-6 is-offset-3">
+    <%= form_for(@user) do |f| %>
+      <div class="field">
+        <%= f.label :name, class: "label" %>
+        <div class="control has-icons-left">
+          <%= f.text_field :name, class: "input", placeholder: "User name" %>
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+        </div>
+      </div>
+        
+      <div class="field">
+        <%= f.label :email, class: "label" %>
+        <div class="control has-icons-left">
+          <%= f.email_field :email, class: "input", placeholder: "User email" %>
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :password, class: "label" %>
+        <div class="control has-icons-left">
+          <%= f.password_field :password, class: "input", placeholder: "Type your password" %>
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span> 
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, class: "label" %>
+        <%= content_tag(:div, class: "control has-icons-left") do %>
+          <%= f.password_field :password_confirmation, class: "input", placeholder: "Type your password again" %>
+          <%= content_tag(:span, class: "icon is-small is-left") do  %>
+            <i class="fas fa-lock"></i>
+          <% end %> 
+        <% end %>
+      </div>
+      
+
+      <div class="field is-grouped is-pulled-right">
+        <div class="control">
+          <%= f.submit "Create new user", class: "button is-link" %>
+        </div>
+        <div class="control">
+          <%= link_to root_path do %>
+            <%= button_tag "Cancel", class: "button is-danger" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
