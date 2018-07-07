@@ -1,4 +1,4 @@
-<div class="box column is-6 is-offset-3">
+<div class="box column is-6 is-offset-3 form-margin">
     <%= form_for(@user) do |f| %>
       <div class="field">
         <%= f.label :name, class: "label" %>
@@ -41,7 +41,7 @@
       </div>
       
 
-      <div class="field is-grouped is-pulled-right">
+      <div class="field is-grouped">
         <div class="control">
           <%= f.submit "Create new user", class: "button is-link" %>
         </div>
