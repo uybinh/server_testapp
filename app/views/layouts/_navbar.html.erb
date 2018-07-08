@@ -18,27 +18,34 @@
       <a class="navbar-item" href="<%= users_path %>">
         Users
       </a>
+      <% if logged_in? %>
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link" href="/documentation/overview/start/">
           Account
         </a>
         <div class="navbar-dropdown is-boxed">
           
-          <a class="navbar-item" href="">
-            Profile
-          </a>
-          <a class="navbar-item" href="">
+          <%= link_to "Profile", current_user, class: "navbar-item" %>
+          <a class="navbar-item" href="#">
             Settings
           </a>
           <hr class="navbar-divider">
-          <a class="navbar-item" href="">
+          <a class="navbar-item" href="#">
             Logout
           </a>
         </div>
       </div>
+       <% end %>
     </div>
 
     <div class="navbar-end">
+      <% if logged_in? %>
+      <div class="navbar-item">
+        <p class="control">
+          <%= link_to "Logout", logout_path, class: "button is-primary"%>
+        </p>
+      </div>
+      <% else %>
       <div class="navbar-item">
         <p class="control">
           <%= link_to "Signup", new_user_path, class: "button is-primary"%>
@@ -49,6 +56,7 @@
           <%= link_to "Login", login_path, class: "button is-primary"%>
         </p>
       </div>
+      <% end %>
     </div>
   </div>
 </nav>
