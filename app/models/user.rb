@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
-  before_create :remember
+  before_save :downcase_email
   NAME_REGEX = /\A[\w\s]+\z/i
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :name,  presence: true,
@@ -25,6 +25,10 @@ class User < ApplicationRecord
 
   def remember
     self.remember_token = User.new_token
-    update_attribute(:remember_digest, User.digest(remember_token))
+    update_attribute(:remember_digest,User.digest(remember_token))
+  end
+
+  def downcase_email
+    self.email.downcase!
   end
 end
