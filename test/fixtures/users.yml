@@ -3,9 +3,9 @@
 uybinh:
   name: Uy Binh
   email: binh@gmail.com
-  password_digest: <%= User.digest("password") %>
+  password_digest: <%= User.bcrypt_digest("password") %>
 
-uybinh:
+minhxuan:
   name: Minh Xuan
   email: xuan@gmail.com
-  password_digest: <%= User.digest("password") %>
+  password_digest: <%= User.bcrypt_digest("password") %>
