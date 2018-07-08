@@ -1,6 +1,10 @@
 language: ruby
 rvm:
   - 2.5.0
+cache:
+  - bundler
+  - directories:
+    - /home/travis/.rvm/
 services:
   - postgresql
 before_script:
