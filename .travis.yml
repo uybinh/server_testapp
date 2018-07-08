@@ -8,11 +8,14 @@ cache:
 services:
 - postgresql
 before_script:
+- cp config/database.yml config/database.yml.back
 - cp config/database.travis.yml config/database.yml
 - psql -c 'create database travis_ci_test;' -U postgres
 script:
 - bundle exec rails db:migrate RAILS_ENV=test
 - bundle exec rails test
+after_script:
+- cp config/database.yml.back config/database.yml
 notifications:
   slack:
     secure: ldDvUNJo13YVszW1YYVXfCaEqiABinBkGYuzmLbLsuTQvgak6zAOs8Et2cILR1wqfO7iNhM0RJEW00joTD1au2/7ZI7+O21EF3Cl0dU5Pp0byY4ZS7nAv01hrW0drjQY3f8n+8ZsRcdodbSOd9nildw/KtTKbTVnRLlFY/sqw1a1fCAb9Cdseih0EpejLziZgv/M+H+T6loBeCocGkFCCfT7ylgngZtVyOu9AQiz1HzzbxoaS8nTVyU0d5yg0A9gci8pQ6Oj1ewKUB4h+D4bUUiem08nUxi8Qd8eDSatvk7uEWBvti5B9EryIkRS/n/04ryLr15Ffz3hTc6E+c+t1kN+VrHg1kCHS+Ro7pyVm1bVyv3OqINxtJMaVHtxcCHCpEY2xVIW6+JWqxxV8UU2tRs6F6tPwVedZmzNAgUmiD1YlVK35m/mQM1ToVsCx3Yns4bIALJNxn7B83KmwlHYK5ZAL6lKXgvu2wD/IENNfYGHEk/fvPF/Mt58pur1iO3UZ0pjrx/5rT4ZXIdg6gwTYbVuebVE5IsBbm0inwGulpuE6u986gbH9nS4YsMSVKhiYxfFpZvvWEisWi/AOwgA0mLc7EB0fgHcpldMqco3pswBUx0rFK9pkliEmdgGJ/osa/UiNGAg1tbHsvknNvnxLdy47jjYRyWADaI+ZAordks=
