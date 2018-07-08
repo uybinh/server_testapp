@@ -58,6 +58,7 @@ group :test do
   gem 'guard-minitest'
   gem 'minitest'
   gem 'minitest-reporters'
+  gem 'pg'
 end
 
 group :production do
