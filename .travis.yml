@@ -14,7 +14,7 @@ before_script:
 script:
 - bundle exec rails db:migrate RAILS_ENV=test
 - bundle exec rails test
-after_script:
+- cp config/database.yml config/database.travis.yml
 - cp config/database.yml.back config/database.yml
 notifications:
   slack:
