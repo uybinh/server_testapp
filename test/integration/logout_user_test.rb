@@ -10,5 +10,9 @@ class LogoutUserTest < ActionDispatch::IntegrationTest
     assert_template "sessions/new"
     post login_path, params: { session: { email: "binh@gmail.com", password: "password"}}
     delete logout_path
+    assert_redirected_to root_path
+    follow_redirect!
+    assert_template "users/index"
+    assert_select "a.button", text: "Login"
   end
 end
