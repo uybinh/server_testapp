@@ -42,7 +42,8 @@
       <% if logged_in? %>
       <div class="navbar-item">
         <p class="control">
-          <%= link_to "Logout", logout_path, class: "button is-primary"%>
+          <%= link_to "Logout", logout_path, class: "button is-primary",
+                                            method: :delete, data: {confirm: "Do you want to logout?"} %>
         </p>
       </div>
       <% else %>

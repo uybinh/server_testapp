@@ -24,5 +24,8 @@ class LoginUserTest < ActionDispatch::IntegrationTest
     post login_path, params: { session: { email: "binh@gmail.com", password: "password"}}
     assert is_logged_in?
     assert_redirected_to @user
+    follow_redirect!
+    assert_template "users/show"
+    assert_select("a.button", {text: "Logout", count: 1})
   end
 end
