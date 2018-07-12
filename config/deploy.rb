@@ -1,5 +1,5 @@
 # Change these
-server '172.104.162.202', port: 3000, roles: [:web, :app, :db], primary: true
+server '172.104.162.202', roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:uybinh/server_testapp.git'
 set :application,     'server_testapp'
@@ -22,6 +22,18 @@ set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
+set :linked_files, %w{config/master.key}
+
+# config rbenv
+set :rbenv_type, :deploy # or :system, depends on your rbenv setup
+set :rbenv_ruby, '2.5.1'
+
+# in case you want to set ruby version from the file:
+# set :rbenv_ruby, File.read('.ruby-version').strip
+
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+set :rbenv_map_bins, %w{rake gem bundle ruby rails puma pumactl}
+set :rbenv_roles, :all # default value
 
 ## Defaults:
 # set :scm,           :git
@@ -69,7 +81,7 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      invoke 'puma:restart'
+      invoke! 'puma:restart'
     end
   end
 
